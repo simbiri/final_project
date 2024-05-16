@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Message attachment #<%= @the_message_attachment.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/message_attachments">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_message_attachment/<%= @the_message_attachment.id %>">
+          Delete message attachment
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Message
+      </dt>
+      <dd>
+        <%= @the_message_attachment.message_id %>
+      </dd>
+
+      <dt>
+        File url
+      </dt>
+      <dd>
+        <%= @the_message_attachment.file_url %>
+      </dd>
+
+      <dt>
+        File type
+      </dt>
+      <dd>
+        <%= @the_message_attachment.file_type %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message_attachment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message_attachment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit message attachment
+    </h2>
+
+    <form action="/modify_message_attachment/<%= @the_message_attachment.id %>"  method="post" >
+      <div>
+        <label for="message_id_box">
+          Message
+        </label>
+
+        <input type="text" id="message_id_box" name="query_message_id" value="<%= @the_message_attachment.message_id %>">
+      </div>
+
+      <div>
+        <label for="file_url_box">
+          File url
+        </label>
+
+        <input type="text" id="file_url_box" name="query_file_url" value="<%= @the_message_attachment.file_url %>">
+      </div>
+
+      <div>
+        <label for="file_type_box">
+          File type
+        </label>
+
+        <input type="text" id="file_type_box" name="query_file_type" value="<%= @the_message_attachment.file_type %>">
+      </div>
+
+      <button>
+        Update message attachment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

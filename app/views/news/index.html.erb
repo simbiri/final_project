@@ -1,0 +1,166 @@
+<div>
+  <div>
+    <h1>
+      List of all news
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new news
+    </h2>
+
+    <form action="/insert_news" method="post">
+      <div>
+        <label for="text_content_box">
+          Text content
+        </label>
+
+        <input type="text" id="text_content_box" name="query_text_content">
+      </div>
+
+      <div>
+        <label for="journalist_id_box">
+          Journalist
+        </label>
+
+        <input type="text" id="journalist_id_box" name="query_journalist_id">
+      </div>
+
+      <div>
+        <label for="featuring_user_id_box">
+          Featuring user
+        </label>
+
+        <input type="text" id="featuring_user_id_box" name="query_featuring_user_id">
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+
+        <input type="text" id="category_box" name="query_category">
+      </div>
+
+      <div>
+        <label for="branch_id_box">
+          Branch
+        </label>
+
+        <input type="text" id="branch_id_box" name="query_branch_id">
+      </div>
+
+      <div>
+        <label for="news_attachments_count_box">
+          News attachments count
+        </label>
+
+        <input type="text" id="news_attachments_count_box" name="query_news_attachments_count">
+      </div>
+
+      <button>
+        Create news
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Text content
+        </th>
+
+        <th>
+          Journalist
+        </th>
+
+        <th>
+          Featuring user
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Branch
+        </th>
+
+        <th>
+          News attachments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_news.each do |a_news| %>
+      <tr>
+        <td>
+          <%= a_news.id %>
+        </td>
+
+        <td>
+          <%= a_news.text_content %>
+        </td>
+
+        <td>
+          <%= a_news.journalist_id %>
+        </td>
+
+        <td>
+          <%= a_news.featuring_user_id %>
+        </td>
+
+        <td>
+          <%= a_news.category %>
+        </td>
+
+        <td>
+          <%= a_news.branch_id %>
+        </td>
+
+        <td>
+          <%= a_news.news_attachments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_news.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_news.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/news/<%= a_news.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

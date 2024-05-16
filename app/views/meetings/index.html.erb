@@ -1,0 +1,208 @@
+<div>
+  <div>
+    <h1>
+      List of all meetings
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new meeting
+    </h2>
+
+    <form action="/insert_meeting" method="post">
+      <div>
+        <label for="meeting_url_box">
+          Meeting url
+        </label>
+
+        <input type="text" id="meeting_url_box" name="query_meeting_url">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_virtual_box" name="query_is_virtual" value="1">
+
+        <label for="is_virtual_box">Is virtual</label>
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="start_time_box">
+          Start time
+        </label>
+
+        <input type="datetime-local" id="start_time_box" name="query_start_time">
+      </div>
+
+      <div>
+        <label for="end_time_box">
+          End time
+        </label>
+
+        <input type="datetime-local" id="end_time_box" name="query_end_time">
+      </div>
+
+      <div>
+        <label for="chairperson_id_box">
+          Chairperson
+        </label>
+
+        <input type="text" id="chairperson_id_box" name="query_chairperson_id">
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_private_box" name="query_is_private" value="1">
+
+        <label for="is_private_box">Is private</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_event_box" name="query_is_event" value="1">
+
+        <label for="is_event_box">Is event</label>
+      </div>
+
+      <button>
+        Create meeting
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Meeting url
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Is virtual
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Start time
+        </th>
+
+        <th>
+          End time
+        </th>
+
+        <th>
+          Chairperson
+        </th>
+
+        <th>
+          Is private
+        </th>
+
+        <th>
+          Is event
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_meetings.each do |a_meeting| %>
+      <tr>
+        <td>
+          <%= a_meeting.id %>
+        </td>
+
+        <td>
+          <%= a_meeting.meeting_url %>
+        </td>
+
+        <td>
+          <%= a_meeting.description %>
+        </td>
+
+        <td>
+          <%= a_meeting.is_virtual %>
+        </td>
+
+        <td>
+          <%= a_meeting.title %>
+        </td>
+
+        <td>
+          <%= a_meeting.start_time %>
+        </td>
+
+        <td>
+          <%= a_meeting.end_time %>
+        </td>
+
+        <td>
+          <%= a_meeting.chairperson_id %>
+        </td>
+
+        <td>
+          <%= a_meeting.is_private %>
+        </td>
+
+        <td>
+          <%= a_meeting.is_event %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_meeting.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_meeting.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/meetings/<%= a_meeting.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

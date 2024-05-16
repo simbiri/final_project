@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      User workspace #<%= @the_user_workspace.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/user_workspaces">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_user_workspace/<%= @the_user_workspace.id %>">
+          Delete user workspace
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_user_workspace.user_id %>
+      </dd>
+
+      <dt>
+        Workspace
+      </dt>
+      <dd>
+        <%= @the_user_workspace.workspace_id %>
+      </dd>
+
+      <dt>
+        Role
+      </dt>
+      <dd>
+        <%= @the_user_workspace.role %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_workspace.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_workspace.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit user workspace
+    </h2>
+
+    <form action="/modify_user_workspace/<%= @the_user_workspace.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_user_workspace.user_id %>">
+      </div>
+
+      <div>
+        <label for="workspace_id_box">
+          Workspace
+        </label>
+
+        <input type="text" id="workspace_id_box" name="query_workspace_id" value="<%= @the_user_workspace.workspace_id %>">
+      </div>
+
+      <div>
+        <label for="role_box">
+          Role
+        </label>
+
+        <input type="text" id="role_box" name="query_role" value="<%= @the_user_workspace.role %>">
+      </div>
+
+      <button>
+        Update user workspace
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

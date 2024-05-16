@@ -1,0 +1,146 @@
+<div>
+  <div>
+    <h1>
+      News #<%= @the_news.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/news">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_news/<%= @the_news.id %>">
+          Delete news
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Text content
+      </dt>
+      <dd>
+        <%= @the_news.text_content %>
+      </dd>
+
+      <dt>
+        Journalist
+      </dt>
+      <dd>
+        <%= @the_news.journalist_id %>
+      </dd>
+
+      <dt>
+        Featuring user
+      </dt>
+      <dd>
+        <%= @the_news.featuring_user_id %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_news.category %>
+      </dd>
+
+      <dt>
+        Branch
+      </dt>
+      <dd>
+        <%= @the_news.branch_id %>
+      </dd>
+
+      <dt>
+        News attachments count
+      </dt>
+      <dd>
+        <%= @the_news.news_attachments_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_news.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_news.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit news
+    </h2>
+
+    <form action="/modify_news/<%= @the_news.id %>"  method="post" >
+      <div>
+        <label for="text_content_box">
+          Text content
+        </label>
+
+        <input type="text" id="text_content_box" name="query_text_content" value="<%= @the_news.text_content %>">
+      </div>
+
+      <div>
+        <label for="journalist_id_box">
+          Journalist
+        </label>
+
+        <input type="text" id="journalist_id_box" name="query_journalist_id" value="<%= @the_news.journalist_id %>">
+      </div>
+
+      <div>
+        <label for="featuring_user_id_box">
+          Featuring user
+        </label>
+
+        <input type="text" id="featuring_user_id_box" name="query_featuring_user_id" value="<%= @the_news.featuring_user_id %>">
+      </div>
+
+      <div>
+        <label for="category_box">
+          Category
+        </label>
+
+        <input type="text" id="category_box" name="query_category" value="<%= @the_news.category %>">
+      </div>
+
+      <div>
+        <label for="branch_id_box">
+          Branch
+        </label>
+
+        <input type="text" id="branch_id_box" name="query_branch_id" value="<%= @the_news.branch_id %>">
+      </div>
+
+      <div>
+        <label for="news_attachments_count_box">
+          News attachments count
+        </label>
+
+        <input type="text" id="news_attachments_count_box" name="query_news_attachments_count" value="<%= @the_news.news_attachments_count %>">
+      </div>
+
+      <button>
+        Update news
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all messages
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new message
+    </h2>
+
+    <form action="/insert_message" method="post">
+      <div>
+        <label for="workspace_id_box">
+          Workspace
+        </label>
+
+        <input type="text" id="workspace_id_box" name="query_workspace_id">
+      </div>
+
+      <div>
+        <label for="text_content_box">
+          Text content
+        </label>
+
+        <textarea id="text_content_box" name="query_text_content" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="attachments_count_box">
+          Attachments count
+        </label>
+
+        <input type="text" id="attachments_count_box" name="query_attachments_count">
+      </div>
+
+      <button>
+        Create message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Workspace
+        </th>
+
+        <th>
+          Text content
+        </th>
+
+        <th>
+          Attachments count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_messages.each do |a_message| %>
+      <tr>
+        <td>
+          <%= a_message.id %>
+        </td>
+
+        <td>
+          <%= a_message.workspace_id %>
+        </td>
+
+        <td>
+          <%= a_message.text_content %>
+        </td>
+
+        <td>
+          <%= a_message.attachments_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_message.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_message.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/messages/<%= a_message.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

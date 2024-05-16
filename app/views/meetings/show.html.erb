@@ -1,0 +1,193 @@
+<div>
+  <div>
+    <h1>
+      Meeting #<%= @the_meeting.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/meetings">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_meeting/<%= @the_meeting.id %>">
+          Delete meeting
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Meeting url
+      </dt>
+      <dd>
+        <%= @the_meeting.meeting_url %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_meeting.description %>
+      </dd>
+
+      <dt>
+        Is virtual
+      </dt>
+      <dd>
+        <%= @the_meeting.is_virtual %>
+      </dd>
+
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_meeting.title %>
+      </dd>
+
+      <dt>
+        Start time
+      </dt>
+      <dd>
+        <%= @the_meeting.start_time %>
+      </dd>
+
+      <dt>
+        End time
+      </dt>
+      <dd>
+        <%= @the_meeting.end_time %>
+      </dd>
+
+      <dt>
+        Chairperson
+      </dt>
+      <dd>
+        <%= @the_meeting.chairperson_id %>
+      </dd>
+
+      <dt>
+        Is private
+      </dt>
+      <dd>
+        <%= @the_meeting.is_private %>
+      </dd>
+
+      <dt>
+        Is event
+      </dt>
+      <dd>
+        <%= @the_meeting.is_event %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit meeting
+    </h2>
+
+    <form action="/modify_meeting/<%= @the_meeting.id %>"  method="post" >
+      <div>
+        <label for="meeting_url_box">
+          Meeting url
+        </label>
+
+        <input type="text" id="meeting_url_box" name="query_meeting_url" value="<%= @the_meeting.meeting_url %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_meeting.description %></textarea>
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_virtual_box" name="query_is_virtual" value="1" <%= "checked" if @the_meeting.is_virtual %>>
+
+        <label for="is_virtual_box">
+            Is virtual
+        </label>
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_meeting.title %>">
+      </div>
+
+      <div>
+        <label for="start_time_box">
+          Start time
+        </label>
+
+        <input type="datetime-local" id="start_time_box" name="query_start_time"
+         value="<%= @the_meeting.start_time %>">
+      </div>
+
+      <div>
+        <label for="end_time_box">
+          End time
+        </label>
+
+        <input type="datetime-local" id="end_time_box" name="query_end_time"
+         value="<%= @the_meeting.end_time %>">
+      </div>
+
+      <div>
+        <label for="chairperson_id_box">
+          Chairperson
+        </label>
+
+        <input type="text" id="chairperson_id_box" name="query_chairperson_id" value="<%= @the_meeting.chairperson_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_private_box" name="query_is_private" value="1" <%= "checked" if @the_meeting.is_private %>>
+
+        <label for="is_private_box">
+            Is private
+        </label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="is_event_box" name="query_is_event" value="1" <%= "checked" if @the_meeting.is_event %>>
+
+        <label for="is_event_box">
+            Is event
+        </label>
+      </div>
+
+      <button>
+        Update meeting
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

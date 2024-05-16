@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all message attachments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new message attachment
+    </h2>
+
+    <form action="/insert_message_attachment" method="post">
+      <div>
+        <label for="message_id_box">
+          Message
+        </label>
+
+        <input type="text" id="message_id_box" name="query_message_id">
+      </div>
+
+      <div>
+        <label for="file_url_box">
+          File url
+        </label>
+
+        <input type="text" id="file_url_box" name="query_file_url">
+      </div>
+
+      <div>
+        <label for="file_type_box">
+          File type
+        </label>
+
+        <input type="text" id="file_type_box" name="query_file_type">
+      </div>
+
+      <button>
+        Create message attachment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Message
+        </th>
+
+        <th>
+          File url
+        </th>
+
+        <th>
+          File type
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_message_attachments.each do |a_message_attachment| %>
+      <tr>
+        <td>
+          <%= a_message_attachment.id %>
+        </td>
+
+        <td>
+          <%= a_message_attachment.message_id %>
+        </td>
+
+        <td>
+          <%= a_message_attachment.file_url %>
+        </td>
+
+        <td>
+          <%= a_message_attachment.file_type %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_message_attachment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_message_attachment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/message_attachments/<%= a_message_attachment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

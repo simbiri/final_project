@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all workspaces
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new workspace
+    </h2>
+
+    <form action="/insert_workspace" method="post">
+      <div>
+        <label for="image_url_box">
+          Image url
+        </label>
+
+        <input type="text" id="image_url_box" name="query_image_url">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="short_description_box">
+          Short description
+        </label>
+
+        <textarea id="short_description_box" name="query_short_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="users_count_box">
+          Users count
+        </label>
+
+        <input type="text" id="users_count_box" name="query_users_count">
+      </div>
+
+      <div>
+        <label for="messages_count_box">
+          Messages count
+        </label>
+
+        <input type="text" id="messages_count_box" name="query_messages_count">
+      </div>
+
+      <button>
+        Create workspace
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Image url
+        </th>
+
+        <th>
+          Title
+        </th>
+
+        <th>
+          Short description
+        </th>
+
+        <th>
+          Users count
+        </th>
+
+        <th>
+          Messages count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_workspaces.each do |a_workspace| %>
+      <tr>
+        <td>
+          <%= a_workspace.id %>
+        </td>
+
+        <td>
+          <%= a_workspace.image_url %>
+        </td>
+
+        <td>
+          <%= a_workspace.title %>
+        </td>
+
+        <td>
+          <%= a_workspace.short_description %>
+        </td>
+
+        <td>
+          <%= a_workspace.users_count %>
+        </td>
+
+        <td>
+          <%= a_workspace.messages_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_workspace.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_workspace.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/workspaces/<%= a_workspace.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

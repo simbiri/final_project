@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Workspace #<%= @the_workspace.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/workspaces">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_workspace/<%= @the_workspace.id %>">
+          Delete workspace
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Image url
+      </dt>
+      <dd>
+        <%= @the_workspace.image_url %>
+      </dd>
+
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_workspace.title %>
+      </dd>
+
+      <dt>
+        Short description
+      </dt>
+      <dd>
+        <%= @the_workspace.short_description %>
+      </dd>
+
+      <dt>
+        Users count
+      </dt>
+      <dd>
+        <%= @the_workspace.users_count %>
+      </dd>
+
+      <dt>
+        Messages count
+      </dt>
+      <dd>
+        <%= @the_workspace.messages_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_workspace.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_workspace.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit workspace
+    </h2>
+
+    <form action="/modify_workspace/<%= @the_workspace.id %>"  method="post" >
+      <div>
+        <label for="image_url_box">
+          Image url
+        </label>
+
+        <input type="text" id="image_url_box" name="query_image_url" value="<%= @the_workspace.image_url %>">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_workspace.title %>">
+      </div>
+
+      <div>
+        <label for="short_description_box">
+          Short description
+        </label>
+
+        <textarea id="short_description_box" name="query_short_description"><%= @the_workspace.short_description %></textarea>
+      </div>
+
+      <div>
+        <label for="users_count_box">
+          Users count
+        </label>
+
+        <input type="text" id="users_count_box" name="query_users_count" value="<%= @the_workspace.users_count %>">
+      </div>
+
+      <div>
+        <label for="messages_count_box">
+          Messages count
+        </label>
+
+        <input type="text" id="messages_count_box" name="query_messages_count" value="<%= @the_workspace.messages_count %>">
+      </div>
+
+      <button>
+        Update workspace
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

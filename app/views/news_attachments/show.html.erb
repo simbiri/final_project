@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      News attachment #<%= @the_news_attachment.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/news_attachments">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_news_attachment/<%= @the_news_attachment.id %>">
+          Delete news attachment
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        News
+      </dt>
+      <dd>
+        <%= @the_news_attachment.news_id %>
+      </dd>
+
+      <dt>
+        File url
+      </dt>
+      <dd>
+        <%= @the_news_attachment.file_url %>
+      </dd>
+
+      <dt>
+        Filetype
+      </dt>
+      <dd>
+        <%= @the_news_attachment.filetype %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_news_attachment.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_news_attachment.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit news attachment
+    </h2>
+
+    <form action="/modify_news_attachment/<%= @the_news_attachment.id %>"  method="post" >
+      <div>
+        <label for="news_id_box">
+          News
+        </label>
+
+        <input type="text" id="news_id_box" name="query_news_id" value="<%= @the_news_attachment.news_id %>">
+      </div>
+
+      <div>
+        <label for="file_url_box">
+          File url
+        </label>
+
+        <input type="text" id="file_url_box" name="query_file_url" value="<%= @the_news_attachment.file_url %>">
+      </div>
+
+      <div>
+        <label for="filetype_box">
+          Filetype
+        </label>
+
+        <input type="text" id="filetype_box" name="query_filetype" value="<%= @the_news_attachment.filetype %>">
+      </div>
+
+      <button>
+        Update news attachment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

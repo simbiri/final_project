@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all news attachments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new news attachment
+    </h2>
+
+    <form action="/insert_news_attachment" method="post">
+      <div>
+        <label for="news_id_box">
+          News
+        </label>
+
+        <input type="text" id="news_id_box" name="query_news_id">
+      </div>
+
+      <div>
+        <label for="file_url_box">
+          File url
+        </label>
+
+        <input type="text" id="file_url_box" name="query_file_url">
+      </div>
+
+      <div>
+        <label for="filetype_box">
+          Filetype
+        </label>
+
+        <input type="text" id="filetype_box" name="query_filetype">
+      </div>
+
+      <button>
+        Create news attachment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          News
+        </th>
+
+        <th>
+          File url
+        </th>
+
+        <th>
+          Filetype
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_news_attachments.each do |a_news_attachment| %>
+      <tr>
+        <td>
+          <%= a_news_attachment.id %>
+        </td>
+
+        <td>
+          <%= a_news_attachment.news_id %>
+        </td>
+
+        <td>
+          <%= a_news_attachment.file_url %>
+        </td>
+
+        <td>
+          <%= a_news_attachment.filetype %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_news_attachment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_news_attachment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/news_attachments/<%= a_news_attachment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

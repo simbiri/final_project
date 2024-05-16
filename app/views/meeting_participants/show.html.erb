@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Meeting participant #<%= @the_meeting_participant.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/meeting_participants">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_meeting_participant/<%= @the_meeting_participant.id %>">
+          Delete meeting participant
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Meeting
+      </dt>
+      <dd>
+        <%= @the_meeting_participant.meeting_id %>
+      </dd>
+
+      <dt>
+        Participant
+      </dt>
+      <dd>
+        <%= @the_meeting_participant.participant_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_meeting_participant.status %>
+      </dd>
+
+      <dt>
+        Role
+      </dt>
+      <dd>
+        <%= @the_meeting_participant.role %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting_participant.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting_participant.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit meeting participant
+    </h2>
+
+    <form action="/modify_meeting_participant/<%= @the_meeting_participant.id %>"  method="post" >
+      <div>
+        <label for="meeting_id_box">
+          Meeting
+        </label>
+
+        <input type="text" id="meeting_id_box" name="query_meeting_id" value="<%= @the_meeting_participant.meeting_id %>">
+      </div>
+
+      <div>
+        <label for="participant_id_box">
+          Participant
+        </label>
+
+        <input type="text" id="participant_id_box" name="query_participant_id" value="<%= @the_meeting_participant.participant_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_meeting_participant.status %>">
+      </div>
+
+      <div>
+        <label for="role_box">
+          Role
+        </label>
+
+        <input type="text" id="role_box" name="query_role" value="<%= @the_meeting_participant.role %>">
+      </div>
+
+      <button>
+        Update meeting participant
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

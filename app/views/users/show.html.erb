@@ -1,0 +1,326 @@
+<div>
+  <div>
+    <h1>
+      User #<%= @the_user.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/users">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_user/<%= @the_user.id %>">
+          Delete user
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        First name
+      </dt>
+      <dd>
+        <%= @the_user.first_name %>
+      </dd>
+
+      <dt>
+        Last name
+      </dt>
+      <dd>
+        <%= @the_user.last_name %>
+      </dd>
+
+      <dt>
+        Username
+      </dt>
+      <dd>
+        <%= @the_user.username %>
+      </dd>
+
+      <dt>
+        Email
+      </dt>
+      <dd>
+        <%= @the_user.email %>
+      </dd>
+
+      <dt>
+        Role
+      </dt>
+      <dd>
+        <%= @the_user.role %>
+      </dd>
+
+      <dt>
+        Bio
+      </dt>
+      <dd>
+        <%= @the_user.bio %>
+      </dd>
+
+      <dt>
+        Website link
+      </dt>
+      <dd>
+        <%= @the_user.website_link %>
+      </dd>
+
+      <dt>
+        Prof picture url
+      </dt>
+      <dd>
+        <%= @the_user.prof_picture_url %>
+      </dd>
+
+      <dt>
+        Backg picture url
+      </dt>
+      <dd>
+        <%= @the_user.backg_picture_url %>
+      </dd>
+
+      <dt>
+        Linked in url
+      </dt>
+      <dd>
+        <%= @the_user.linked_in_url %>
+      </dd>
+
+      <dt>
+        Insta url
+      </dt>
+      <dd>
+        <%= @the_user.insta_url %>
+      </dd>
+
+      <dt>
+        Faceb url
+      </dt>
+      <dd>
+        <%= @the_user.faceb_url %>
+      </dd>
+
+      <dt>
+        X url
+      </dt>
+      <dd>
+        <%= @the_user.x_url %>
+      </dd>
+
+      <dt>
+        Privacy status
+      </dt>
+      <dd>
+        <%= @the_user.privacy_status %>
+      </dd>
+
+      <dt>
+        Hierarchy
+      </dt>
+      <dd>
+        <%= @the_user.hierarchy_id %>
+      </dd>
+
+      <dt>
+        Branch
+      </dt>
+      <dd>
+        <%= @the_user.branch_id %>
+      </dd>
+
+      <dt>
+        Country em
+      </dt>
+      <dd>
+        <%= @the_user.country_em %>
+      </dd>
+
+      <dt>
+        City name
+      </dt>
+      <dd>
+        <%= @the_user.city_name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit user
+    </h2>
+
+    <form action="/modify_user/<%= @the_user.id %>"  method="post" >
+      <div>
+        <label for="first_name_box">
+          First name
+        </label>
+
+        <input type="text" id="first_name_box" name="query_first_name" value="<%= @the_user.first_name %>">
+      </div>
+
+      <div>
+        <label for="last_name_box">
+          Last name
+        </label>
+
+        <input type="text" id="last_name_box" name="query_last_name" value="<%= @the_user.last_name %>">
+      </div>
+
+      <div>
+        <label for="username_box">
+          Username
+        </label>
+
+        <textarea id="username_box" name="query_username"><%= @the_user.username %></textarea>
+      </div>
+
+      <div>
+        <label for="email_box">
+          Email
+        </label>
+
+        <input type="text" id="email_box" name="query_email" value="<%= @the_user.email %>">
+      </div>
+
+      <div>
+        <label for="role_box">
+          Role
+        </label>
+
+        <input type="text" id="role_box" name="query_role" value="<%= @the_user.role %>">
+      </div>
+
+      <div>
+        <label for="bio_box">
+          Bio
+        </label>
+
+        <textarea id="bio_box" name="query_bio"><%= @the_user.bio %></textarea>
+      </div>
+
+      <div>
+        <label for="website_link_box">
+          Website link
+        </label>
+
+        <input type="text" id="website_link_box" name="query_website_link" value="<%= @the_user.website_link %>">
+      </div>
+
+      <div>
+        <label for="prof_picture_url_box">
+          Prof picture url
+        </label>
+
+        <input type="text" id="prof_picture_url_box" name="query_prof_picture_url" value="<%= @the_user.prof_picture_url %>">
+      </div>
+
+      <div>
+        <label for="backg_picture_url_box">
+          Backg picture url
+        </label>
+
+        <input type="text" id="backg_picture_url_box" name="query_backg_picture_url" value="<%= @the_user.backg_picture_url %>">
+      </div>
+
+      <div>
+        <label for="linked_in_url_box">
+          Linked in url
+        </label>
+
+        <input type="text" id="linked_in_url_box" name="query_linked_in_url" value="<%= @the_user.linked_in_url %>">
+      </div>
+
+      <div>
+        <label for="insta_url_box">
+          Insta url
+        </label>
+
+        <input type="text" id="insta_url_box" name="query_insta_url" value="<%= @the_user.insta_url %>">
+      </div>
+
+      <div>
+        <label for="faceb_url_box">
+          Faceb url
+        </label>
+
+        <input type="text" id="faceb_url_box" name="query_faceb_url" value="<%= @the_user.faceb_url %>">
+      </div>
+
+      <div>
+        <label for="x_url_box">
+          X url
+        </label>
+
+        <input type="text" id="x_url_box" name="query_x_url" value="<%= @the_user.x_url %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="privacy_status_box" name="query_privacy_status" value="1" <%= "checked" if @the_user.privacy_status %>>
+
+        <label for="privacy_status_box">
+            Privacy status
+        </label>
+      </div>
+
+      <div>
+        <label for="hierarchy_id_box">
+          Hierarchy
+        </label>
+
+        <input type="text" id="hierarchy_id_box" name="query_hierarchy_id" value="<%= @the_user.hierarchy_id %>">
+      </div>
+
+      <div>
+        <label for="branch_id_box">
+          Branch
+        </label>
+
+        <input type="text" id="branch_id_box" name="query_branch_id" value="<%= @the_user.branch_id %>">
+      </div>
+
+      <div>
+        <label for="country_em_box">
+          Country em
+        </label>
+
+        <input type="text" id="country_em_box" name="query_country_em" value="<%= @the_user.country_em %>">
+      </div>
+
+      <div>
+        <label for="city_name_box">
+          City name
+        </label>
+
+        <input type="text" id="city_name_box" name="query_city_name" value="<%= @the_user.city_name %>">
+      </div>
+
+      <button>
+        Update user
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

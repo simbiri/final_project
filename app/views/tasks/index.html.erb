@@ -1,0 +1,182 @@
+<div>
+  <div>
+    <h1>
+      List of all tasks
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new task
+    </h2>
+
+    <form action="/insert_task" method="post">
+      <div>
+        <label for="title_task_box">
+          Title task
+        </label>
+
+        <input type="text" id="title_task_box" name="query_title_task">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="task_due_box">
+          Task due
+        </label>
+
+        <input type="datetime-local" id="task_due_box" name="query_task_due">
+      </div>
+
+      <div>
+        <label for="assigned_by_id_box">
+          Assigned by
+        </label>
+
+        <input type="text" id="assigned_by_id_box" name="query_assigned_by_id">
+      </div>
+
+      <div>
+        <label for="assigned_to_id_box">
+          Assigned to
+        </label>
+
+        <input type="text" id="assigned_to_id_box" name="query_assigned_to_id">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <div>
+        <label for="branch_id_box">
+          Branch
+        </label>
+
+        <input type="text" id="branch_id_box" name="query_branch_id">
+      </div>
+
+      <button>
+        Create task
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Title task
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Task due
+        </th>
+
+        <th>
+          Assigned by
+        </th>
+
+        <th>
+          Assigned to
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Branch
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_tasks.each do |a_task| %>
+      <tr>
+        <td>
+          <%= a_task.id %>
+        </td>
+
+        <td>
+          <%= a_task.title_task %>
+        </td>
+
+        <td>
+          <%= a_task.description %>
+        </td>
+
+        <td>
+          <%= a_task.task_due %>
+        </td>
+
+        <td>
+          <%= a_task.assigned_by_id %>
+        </td>
+
+        <td>
+          <%= a_task.assigned_to_id %>
+        </td>
+
+        <td>
+          <%= a_task.status %>
+        </td>
+
+        <td>
+          <%= a_task.branch_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_task.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_task.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tasks/<%= a_task.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

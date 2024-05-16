@@ -1,0 +1,162 @@
+<div>
+  <div>
+    <h1>
+      Task #<%= @the_task.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/tasks">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_task/<%= @the_task.id %>">
+          Delete task
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Title task
+      </dt>
+      <dd>
+        <%= @the_task.title_task %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_task.description %>
+      </dd>
+
+      <dt>
+        Task due
+      </dt>
+      <dd>
+        <%= @the_task.task_due %>
+      </dd>
+
+      <dt>
+        Assigned by
+      </dt>
+      <dd>
+        <%= @the_task.assigned_by_id %>
+      </dd>
+
+      <dt>
+        Assigned to
+      </dt>
+      <dd>
+        <%= @the_task.assigned_to_id %>
+      </dd>
+
+      <dt>
+        Status
+      </dt>
+      <dd>
+        <%= @the_task.status %>
+      </dd>
+
+      <dt>
+        Branch
+      </dt>
+      <dd>
+        <%= @the_task.branch_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_task.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_task.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit task
+    </h2>
+
+    <form action="/modify_task/<%= @the_task.id %>"  method="post" >
+      <div>
+        <label for="title_task_box">
+          Title task
+        </label>
+
+        <input type="text" id="title_task_box" name="query_title_task" value="<%= @the_task.title_task %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_task.description %></textarea>
+      </div>
+
+      <div>
+        <label for="task_due_box">
+          Task due
+        </label>
+
+        <input type="datetime-local" id="task_due_box" name="query_task_due"
+         value="<%= @the_task.task_due %>">
+      </div>
+
+      <div>
+        <label for="assigned_by_id_box">
+          Assigned by
+        </label>
+
+        <input type="text" id="assigned_by_id_box" name="query_assigned_by_id" value="<%= @the_task.assigned_by_id %>">
+      </div>
+
+      <div>
+        <label for="assigned_to_id_box">
+          Assigned to
+        </label>
+
+        <input type="text" id="assigned_to_id_box" name="query_assigned_to_id" value="<%= @the_task.assigned_to_id %>">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status" value="<%= @the_task.status %>">
+      </div>
+
+      <div>
+        <label for="branch_id_box">
+          Branch
+        </label>
+
+        <input type="text" id="branch_id_box" name="query_branch_id" value="<%= @the_task.branch_id %>">
+      </div>
+
+      <button>
+        Update task
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

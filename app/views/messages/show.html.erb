@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Message #<%= @the_message.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/messages">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_message/<%= @the_message.id %>">
+          Delete message
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Workspace
+      </dt>
+      <dd>
+        <%= @the_message.workspace_id %>
+      </dd>
+
+      <dt>
+        Text content
+      </dt>
+      <dd>
+        <%= @the_message.text_content %>
+      </dd>
+
+      <dt>
+        Attachments count
+      </dt>
+      <dd>
+        <%= @the_message.attachments_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_message.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit message
+    </h2>
+
+    <form action="/modify_message/<%= @the_message.id %>"  method="post" >
+      <div>
+        <label for="workspace_id_box">
+          Workspace
+        </label>
+
+        <input type="text" id="workspace_id_box" name="query_workspace_id" value="<%= @the_message.workspace_id %>">
+      </div>
+
+      <div>
+        <label for="text_content_box">
+          Text content
+        </label>
+
+        <textarea id="text_content_box" name="query_text_content"><%= @the_message.text_content %></textarea>
+      </div>
+
+      <div>
+        <label for="attachments_count_box">
+          Attachments count
+        </label>
+
+        <input type="text" id="attachments_count_box" name="query_attachments_count" value="<%= @the_message.attachments_count %>">
+      </div>
+
+      <button>
+        Update message
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
