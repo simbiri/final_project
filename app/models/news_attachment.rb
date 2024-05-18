@@ -10,4 +10,7 @@
 #  news_id    :integer
 #
 class NewsAttachment < ApplicationRecord
+  # This association links each NewsAttachment directly to a specific News item. 
+  # The 'counter_cache: :news_attachments_count' option is used to maintain a count of how many attachments 
+  belongs_to :news, counter_cache: :news_attachments_count
 end
