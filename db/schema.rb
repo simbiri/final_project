@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_16_085235) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_18_201331) do
   create_table "follow_requests", force: :cascade do |t|
     t.integer "sent_follow_request"
     t.integer "received_follow_request"
@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_16_085235) do
     t.integer "attachments_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "news", force: :cascade do |t|

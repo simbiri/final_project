@@ -16,7 +16,7 @@
 #  chairperson_id :integer
 #
 class Meeting < ApplicationRecord
-  # This association identifies the user who chairs the meeting. The 'class_name' is specified as "User"
+  # This association identifies the user who created the meeting. The 'class_name' is specified as "User"
   # and the 'foreign_key' used is "chairperson_id", linking this model to the users table where the chairperson's
   # user information is stored. The 'required: true' condition ensures that each meeting must have a designated
   # chairperson

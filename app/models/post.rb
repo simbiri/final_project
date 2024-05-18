@@ -23,6 +23,9 @@ class Post < ApplicationRecord
 
   # This association provides a way to access all users who have liked the post.
   # It uses the 'likes' association to reach the 'user' model, showing a list of users who liked each post.
-  has_many :users_liking, through: :likes, source: :user
-end
+  has_many :users_liked_posts, through: :likes, source: :user
 
+  # This association provides a way to access all users who have commented on the post.
+  # It uses the 'comments' association to show a list of users who liked the post.
+  has_many :users_commented_posts, through: :comments, source: :user
+end

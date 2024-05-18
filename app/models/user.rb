@@ -43,6 +43,8 @@ class User < ApplicationRecord
 
   # Users can belong to many workspaces, but if a user is deleted, the foreign key in UserWorkspaces is nullified.
   has_many :workspaces, class_name: "UserWorkspace", foreign_key: "workspace_id", dependent: :nullify
+  #Identifies the messages that belong to as specific user in a workspace
+  has_many :messages
 
   # Users can author many news articles, but if the user is deleted, these relationships are nullified.
   has_many :news, class_name: "News", foreign_key: "journalist_id", dependent: :nullify
@@ -67,7 +69,28 @@ class User < ApplicationRecord
 
   # Indirect association, accessing meetings the user is invited to.
   has_many :meeting_invitations, through: :meetings_invited_to, source: :meeting_invited
+  
+  # Retrieve posts from users that this user follows through sent follow requests.
+  has_many :feed_following, through: :following, source: :owned_posts
 
-  # Users can view a feed of posts from users they follow, an indirect link through received follow requests.
-  has_many :feed, through: :received_follow_requests, source: :owned_posts
+  # Indirect association to fetch the users this user is following.
+  has_many :following, through: :sent_follow_requests, source: :user_sent_request
+
+  # Retrieve posts from users who follow this user through received follow requests.
+  has_many :feed_followers, through: :followers, source: :owned_posts
+
+  # Retrieve posts from users that this user follows through sent follow requests.
+  has_many :feed_following, through: :sent_follow_requests, source: :owned_posts
+
+  # Indirect association to fetch the users this user is following.
+  has_many :following, through: :sent_follow_requests, source: :user_sent_request
+
+  # Retrieve followers - users that follow this user
+  has_many :followers, through: :received_follow_requests, source: :user_received_request
+
+  # Indirect association to fetch users that are followers of the users this user follows.
+  has_many :secondary_followers, through: :following, source: :followers
+
+  # Retrieve posts from followers of the users that this user follows.
+  has_many :discover_posts, through: :secondary_followers, source: :owned_posts
 end
